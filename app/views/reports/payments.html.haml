@@ -1,0 +1,18 @@
+%h3 Payments
+
+%table.table
+  %thead
+    %tr
+      %th Student
+      %th Month
+      %th Payment term
+      %th Day of payment
+  -payments.each do |payment|
+    %tbody
+      %tr
+        %td= payment.student.decorate.full_name
+        %td= payment.decorate.payment_month
+        %td= payment.payment_term
+        %td= payment.day_of_payment
+
+
