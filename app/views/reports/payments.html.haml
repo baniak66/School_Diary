@@ -1,14 +1,12 @@
-%h3 Payments
-
-%table.table
+%table.datatable.table
   %thead
     %tr
       %th Student
       %th Month
       %th Payment term
       %th Day of payment
-  -payments.each do |payment|
-    %tbody
+  %tbody
+    -payments.each do |payment|
       %tr
         %td= payment.student.decorate.full_name
         %td= payment.decorate.payment_month
