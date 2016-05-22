@@ -40,4 +40,18 @@ SubjectItem.all.each do |subject_item|
   end
 end
 
+Student.all.each do |student|
+  (1..12).each { |m| Payment.create(student: student,
+                                    month: Date.new(2016,m,1),
+                                    payment_term: Date.new(2016,m,15))
+                }
+end
+
+100.times do
+  payment = Payment.find(rand(1..Payment.all.count))
+  payment.update_attribute(:day_of_payment, Faker::Date.between(
+                            payment.payment_term.prev_day(15),
+                            payment.payment_term.next_day(30)))
+end
+
 puts "Seeds: done"
